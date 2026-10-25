@@ -1,0 +1,19 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex">
+<title>Connecting… · FactVideoMaker</title>
+<style>body{margin:0;background:#0b0d12;color:#eef0f6;font:16px system-ui,"Segoe UI",Arial,sans-serif;display:grid;place-items:center;height:100vh}</style>
+</head>
+<body>
+<p id="m">Returning to FactVideoMaker on this computer…</p>
+<script>
+// Facebook Login only accepts HTTPS return addresses, so it comes back here and this page hands the
+// result to the FactVideoMaker app running on the same computer (localhost). Nothing is stored here.
+const port = new URLSearchParams(location.search).get("state") || "8765";
+if (/^\d{2,5}$/.test(port)) location.replace(`http://localhost:${port}/oauth/facebook/callback${location.search}`);
+else document.getElementById("m").textContent = "Something went wrong. Close this window and try again in the app.";
+</script>
+</body>
+</html>
